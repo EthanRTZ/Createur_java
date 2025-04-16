@@ -12,19 +12,25 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter the class name:");
             String ClassName = scanner.nextLine();
+            FileWriter writer = new FileWriter(ClassName+".java");
+            writer.write("public class " + ClassName + "{ \n }\n");
 
             //demande le nombre de methode dans cette class
             System.out.println("Enter the number of methods:");
             int nombreMethod = scanner.nextInt();
 
-            while (nombreMethod == nbreMethode){
-
+            while (nbreMethode < nombreMethod) {
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Enter the method name:");
+                String methodName = sc.nextLine();
+                writer.write("     "+"public void " + methodName + "() {\n }\n");
+                nbreMethode++;
             }
 
 
-            FileWriter writer = new FileWriter(ClassName+".java");
 
-            writer.write("public class " + ClassName + "{ \n }");
+
+
             writer.close();
 
             System.out.println("Successfully wrote text to file.");
